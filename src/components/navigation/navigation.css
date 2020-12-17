@@ -1,0 +1,13 @@
+.navTab {
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.navTab a {
+    margin: 10px;
+}
+
+.activeTab {
+    color: red;
+}
