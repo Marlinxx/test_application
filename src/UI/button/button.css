@@ -1,0 +1,7 @@
+.customButton {
+    width: auto;
+    padding: 10px;
+    background-color: rgb(49, 49, 107);
+    color: white;
+    cursor: pointer;
+}
