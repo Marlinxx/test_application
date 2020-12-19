@@ -1,0 +1,14 @@
+.table {
+    width: 90%;
+    margin: auto;
+}
+
+.table, .table th, .table td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.table .action {
+    cursor: pointer;
+    text-decoration: underline;
+}

@@ -1,41 +1,80 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
+import { connect } from 'react-redux';
 
 import HighChart from '../../UI/highChart/highChart';
+import * as actions from '../../redux-store/actions/actions';
+import months from '../../utils/monthConst';
+import Loader from '../../UI/loader/loader';
 
-const analytics = () => {
+const Analytics = (props) => {
+
+    useEffect(() => {
+        props.getData();
+    }, []);
+
     const pieChartOptions = {
         chart: {
-          type: 'spline'
+            type: 'pie'
         },
         title: {
-          text: 'My chart'
+            text: 'Pie chart'
         },
         series: [
-          {
-            data: [1, 2, 1, 4, 3, 6]
-          }
+            {
+                name: 'Records',
+                data: [{
+                    name: 'Active',
+                    y: props.activeRecords
+                },
+                {
+                    name: 'Inactive',
+                    y: props.inActiveRecords
+                }]
+            }
         ]
-      };
+    };
+
     const lineChartOptions = {
         chart: {
-          type: 'spline'
+            type: 'line'
+        },
+        xAxis: {
+            categories: months
         },
         title: {
-          text: 'My chart'
+            text: 'Line chart'
         },
-        series: [
-          {
-            data: [1, 2, 1, 4, 3, 6]
-          }
-        ]
-      };
+        series: [{
+            name: 'Active Records',
+            data: props.stats
+        }]
+    };
+
     return (
         <Fragment>
+            {props.isLoading && <Loader />}
             <p>analytics page works!</p>
-            <HighChart options={pieChartOptions}/>
-            <HighChart options={lineChartOptions}/>
+            <HighChart options={pieChartOptions} />
+            <HighChart options={lineChartOptions} />
         </Fragment>
     );
 }
 
-export default analytics;
+const mapStateToProps = (state) => {
+    return {
+        activeRecords: state.activeRecords,
+        inActiveRecords: state.inActiveRecords,
+        isLoading: state.isLoading,
+        isError: state.isError,
+        errorMessage: state.errorMessage,
+        stats: state.stats
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getData: () => dispatch(actions.getData())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Analytics);
