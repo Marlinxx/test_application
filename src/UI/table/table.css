@@ -6,9 +6,20 @@
 .table, .table th, .table td {
     border: 1px solid black;
     border-collapse: collapse;
+    padding: 5px 2px;
 }
 
 .table .action {
     cursor: pointer;
     text-decoration: underline;
+}
+
+.pagination {
+    margin-top: 20px;
+}
+
+.paginationAction {
+    cursor: pointer;
+    text-decoration: underline;
+    margin-left: 10px;
 }

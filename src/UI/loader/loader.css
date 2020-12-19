@@ -2,8 +2,15 @@
     background-color: rgb(211, 211, 211);
     width: 100%;
     height: 100%;
-    /* vertical-align: middle; */
-    /* text-align: center; */
     position: absolute;
     top: 0;
+    z-index: 1000;
+    opacity: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loaderText {
+    font-size: 30px;
 }

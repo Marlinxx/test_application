@@ -6,8 +6,15 @@
 
 .navTab a {
     margin: 10px;
+    text-decoration: none;
 }
 
 .activeTab {
     color: red;
+    text-decoration: underline !important;
+}
+
+.Navbar {
+    padding: 10px;
+    background-color: bisque;
 }

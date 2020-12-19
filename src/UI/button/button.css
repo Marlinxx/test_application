@@ -1,7 +1,11 @@
 .customButton {
     width: auto;
     padding: 10px;
-    background-color: rgb(49, 49, 107);
+    background-color: rgb(91, 146, 230);
     color: white;
     cursor: pointer;
+    margin-left: 10px;
+    border-radius: 10px;
+    border-color: white;
+    border-style: none;
 }

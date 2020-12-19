@@ -5,7 +5,7 @@ import './loader.css';
 const loader = () => {
 return (
     <div className='loader'>
-        Loading...
+        <span className='loaderText'>Loading...</span>
     </div>
 );
 }

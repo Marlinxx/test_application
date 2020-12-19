@@ -4,13 +4,13 @@ import './navigation.css';
 
 const navigation = () => {
     return (
-        <Fragment>
+        <div className='Navbar'>
             <nav className='navTab'>
-                <NavLink to='/dashboard' activeClassName="activeTab">Dashboard</NavLink>
+                <NavLink to='/' activeClassName="activeTab" exact>Dashboard</NavLink>
                 <NavLink to='/analytics' activeClassName="activeTab">Analytics</NavLink>
                 <NavLink to='/list' activeClassName="activeTab">List</NavLink>
             </nav>
-        </Fragment>
+        </div>
     );
 }
 export default navigation;

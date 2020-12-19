@@ -6,7 +6,6 @@ import Loader from '../../UI/loader/loader';
 import * as actions from '../../redux-store/actions/actions';
 
 const List = (props) => {
-
     useEffect(() => {
         props.getData();
     }, []);
@@ -14,11 +13,12 @@ const List = (props) => {
     return (
         <Fragment>
             {props.isLoading && <Loader />}
-            <p>List component works!</p>
+            <p>List of records in DB</p>
             <Table headers={Object.keys(props.records[0] || {})}
                 rows={props.records}
-                onExpiryClick={() => { props.onExpiryClick()}}
-                onDeleteClick={() => { props.onDeleteClick()}}
+                onExpiryClick={(id) => { props.onExpiryClick(id)}}
+                onDeleteClick={(id) => { props.onDeleteClick(id)}}
+                onGetData={() => { props.getData()}}
             ></Table>
         </Fragment>
     );
@@ -36,8 +36,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         getData: () => dispatch(actions.getData()),
-        onExpiryClick: () => dispatch(actions.onExpireData()),
-        onDeleteClick: () => dispatch(actions.onDeleteData())
+        onExpiryClick: (id) => dispatch(actions.onExpireDataById(id)),
+        onDeleteClick: (id) => dispatch(actions.onDeleteDataById(id))
     }
 }
 

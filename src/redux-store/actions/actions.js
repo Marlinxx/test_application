@@ -49,6 +49,25 @@ export const onDeleteData = () => {
     }
 }
 
+export const onDeleteDataById = (id) => {
+    return dispatch => {
+        const url = `${API.HOST}${API.ENDPOINTS.SET_INACTIVE}`;
+        dispatch(setIsLoading(true));
+        const params = {
+            id: id
+        }
+        axios.post(url, params).then(res => {
+            dispatch(setIsLoading(false));
+            dispatch(setIsError(false));
+            dispatch(getData());
+        }).catch(res => {
+            dispatch(setIsLoading(false));
+            dispatch(setIsError(true));
+            dispatch(setErrorMessage('Something went wrong'));
+        })
+    }
+}
+
 export const onExpireData = () => {
     return dispatch => {
         const url = `${API.HOST}${API.ENDPOINTS.SET_EXPIRY_ALL}`;
@@ -56,6 +75,25 @@ export const onExpireData = () => {
         axios.get(url).then(res => {
             dispatch(setIsLoading(false));
             dispatch(setIsError(false));
+        }).catch(res => {
+            dispatch(setIsLoading(false));
+            dispatch(setIsError(true));
+            dispatch(setErrorMessage('Something went wrong'));
+        })
+    }
+}
+
+export const onExpireDataById = (id) => {
+    return dispatch => {
+        const url = `${API.HOST}${API.ENDPOINTS.SET_EXPIRY}`;
+        dispatch(setIsLoading(true));
+        const params = {
+            id: id
+        }
+        axios.post(url, params).then(res => {
+            dispatch(setIsLoading(false));
+            dispatch(setIsError(false));
+            dispatch(getData());
         }).catch(res => {
             dispatch(setIsLoading(false));
             dispatch(setIsError(true));

@@ -53,7 +53,7 @@ const Analytics = (props) => {
     return (
         <Fragment>
             {props.isLoading && <Loader />}
-            <p>analytics page works!</p>
+            <p>Analytics of the records in DB</p>
             <HighChart options={pieChartOptions} />
             <HighChart options={lineChartOptions} />
         </Fragment>
