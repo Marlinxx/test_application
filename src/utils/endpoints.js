@@ -1,4 +1,5 @@
-export const HOST = 'http://localhost:5000/records';
+// export const HOST = 'http://localhost:5000/records';
+export const HOST = ' https://test-application-nirmal.herokuapp.com/records';
 
 export const ENDPOINTS = {
     GENERATE_DATA: '/generateValues',
