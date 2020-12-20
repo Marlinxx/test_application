@@ -10,8 +10,8 @@
 }
 
 .activeTab {
-    color: red;
     text-decoration: underline !important;
+    font-weight: bolder;
 }
 
 .Navbar {

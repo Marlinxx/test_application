@@ -22,7 +22,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "npm run build && rm -rf ../../nodes/test_node/build && mv -f build ../../nodes/test_node/ && cd ../../nodes/test_node/ && git add . && git commit -m 'New deployment' && git push origin"
   },
   "eslintConfig": {
     "extends": [

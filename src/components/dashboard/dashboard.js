@@ -11,6 +11,7 @@ const dashboard = (props) => {
         <Fragment>
             {props.isLoading && <Loader />}
             <p>Dashboard to create and manipulate records in DB</p>
+            {props.isError && <div className='errorMsg'>{props.errorMessage}</div>}
             <Button label={'Generate data'} clickHandler={() => { props.onGenerateData() }} />
             <Button label={'Reset data'} clickHandler={() => { props.onResetData() }} />
             <Button label={'Delete data'} clickHandler={() => { props.onDeleteData() }} />

@@ -14,6 +14,7 @@ const List = (props) => {
         <Fragment>
             {props.isLoading && <Loader />}
             <p>List of records in DB</p>
+            {props.isError && <div className='errorMsg'>{props.errorMessage}</div>}
             <Table headers={Object.keys(props.records[0] || {})}
                 rows={props.records}
                 onExpiryClick={(id) => { props.onExpiryClick(id)}}

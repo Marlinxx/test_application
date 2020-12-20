@@ -54,6 +54,7 @@ const Analytics = (props) => {
         <Fragment>
             {props.isLoading && <Loader />}
             <p>Analytics of the records in DB</p>
+            {props.isError && <div className='errorMsg'>{props.errorMessage}</div>}
             <HighChart options={pieChartOptions} />
             <HighChart options={lineChartOptions} />
         </Fragment>
