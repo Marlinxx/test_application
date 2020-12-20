@@ -5,6 +5,7 @@ import HighChart from '../../UI/highChart/highChart';
 import * as actions from '../../redux-store/actions/actions';
 import months from '../../utils/monthConst';
 import Loader from '../../UI/loader/loader';
+import './analytics.css';
 
 const Analytics = (props) => {
 
@@ -55,8 +56,10 @@ const Analytics = (props) => {
             {props.isLoading && <Loader />}
             <p>Analytics of the records in DB</p>
             {props.isError && <div className='errorMsg'>{props.errorMessage}</div>}
-            <HighChart options={pieChartOptions} />
-            <HighChart options={lineChartOptions} />
+            <div className='chartsGroup'>
+                <HighChart options={pieChartOptions} />
+                <HighChart options={lineChartOptions} />
+            </div>
         </Fragment>
     );
 }
