@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './navigation.css';
 
-const navigation = () => {
+const Navigation = () => {
     return (
         <div className='Navbar'>
             <nav className='navTab'>
@@ -13,4 +13,4 @@ const navigation = () => {
         </div>
     );
 }
-export default navigation;
+export default Navigation;

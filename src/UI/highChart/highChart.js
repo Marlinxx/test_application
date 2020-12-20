@@ -4,7 +4,7 @@ import HighchartsReact from 'highcharts-react-official';
 
 import './highChart.css';
 
-const highChart = (props) => {
+const HighChart = (props) => {
     return (
         <Fragment>
             <div className='chartContainer'>
@@ -14,4 +14,4 @@ const highChart = (props) => {
     );
 }
 
-export default highChart;
+export default HighChart;

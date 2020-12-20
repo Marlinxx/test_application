@@ -11,6 +11,7 @@ const Table = (props) => {
     let to = (pageNo * paginationLength) < props.rows.length ? (pageNo * paginationLength) : props.rows.length;
     const [rowsToDisplay, setRowsToDisplay] = useState('');
     let table = <div> No records Found</div>;
+    let headers = Object.keys(props.rows[0] || {})
 
     const showPrevious = () => {
         if (pageNo > 1) {
@@ -36,7 +37,7 @@ const Table = (props) => {
                     <table className='table'>
                         <thead>
                             <tr>
-                                {props.headers.map((header, index) => <th key={index}>{header}</th>)}
+                                {headers.map((header, index) => <th key={index}>{header}</th>)}
                                 <th colSpan='2'>
                                     Actions
                             </th>
@@ -44,7 +45,7 @@ const Table = (props) => {
                         </thead>
                         <tbody>
                             {props.rows.slice(from, to).map(row => <tr key={row['Id']}>
-                                {props.headers.map((header, index) => <td key={index}>{row[header]}</td>)}
+                                {headers.map((header, index) => <td key={index}>{row[header]}</td>)}
                                 <td><span className='action' onClick={() => props.onExpiryClick(row['Id'])}>Expire</span></td>
                                 <td><span className='action' onClick={() => props.onDeleteClick(row['Id'])}>Delete</span></td>
                             </tr>)}

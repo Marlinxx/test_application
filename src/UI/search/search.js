@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 import Button from '../button/button';
 import './search.css';
 
-const search = (props) => {
+const Search = (props) => {
 
     const onSearch = () => {
         let id = document.getElementById('searchText').value;
@@ -18,4 +18,4 @@ const search = (props) => {
         </Fragment>
     );
 }
-export default search;
+export default Search;

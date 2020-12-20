@@ -15,7 +15,7 @@ const List = (props) => {
             {props.isLoading && <Loader />}
             <p>List of records in DB</p>
             {props.isError && <div className='errorMsg'>{props.errorMessage}</div>}
-            <Table headers={Object.keys(props.records[0] || {})}
+            <Table
                 rows={props.records}
                 onExpiryClick={(id) => { props.onExpiryClick(id)}}
                 onDeleteClick={(id) => { props.onDeleteClick(id)}}
@@ -43,3 +43,4 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(List);
+// export default List;

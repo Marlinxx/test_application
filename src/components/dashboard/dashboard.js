@@ -6,7 +6,7 @@ import * as actions from '../../redux-store/actions/actions';
 import Loader from '../../UI/loader/loader';
 import './dashboard.css';
 
-const dashboard = (props) => {
+const Dashboard = (props) => {
     return (
         <Fragment>
             {props.isLoading && <Loader />}
@@ -49,4 +49,5 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(dashboard);
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+// export default Dashboard;

@@ -5,7 +5,7 @@ import Analytics from '../analytics/analytics';
 import List from '../list/list';
 import Dashboard from '../dashboard/dashboard';
 
-const router = () => {
+const Router = () => {
 return (
     <Fragment>
         <Route path='/' component={Dashboard} exact/>
@@ -14,4 +14,4 @@ return (
     </Fragment>
 );
 }
-export default router;
+export default Router;
