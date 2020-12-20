@@ -10,7 +10,12 @@ export const onGenerateData = () => {
         dispatch(setIsLoading(true));
         axios.get(url).then(res => {
             dispatch(setIsLoading(false));
-            dispatch(setIsError(false));
+            if (res.data.status === 'FAILED') {
+                dispatch(setIsError(true));
+                dispatch(setErrorMessage(res.data.err));
+            } else {
+                dispatch(setIsError(false));
+            }
         }).catch(res => {
             dispatch(setIsLoading(false));
             dispatch(setIsError(true));
@@ -25,7 +30,12 @@ export const onResetData = () => {
         dispatch(setIsLoading(true));
         axios.get(url).then(res => {
             dispatch(setIsLoading(false));
-            dispatch(setIsError(false));
+            if (res.data.status === 'FAILED') {
+                dispatch(setIsError(true));
+                dispatch(setErrorMessage(res.data.err));
+            } else {
+                dispatch(setIsError(false));
+            }
         }).catch(res => {
             dispatch(setIsLoading(false));
             dispatch(setIsError(true));
@@ -40,7 +50,12 @@ export const onDeleteData = () => {
         dispatch(setIsLoading(true));
         axios.get(url).then(res => {
             dispatch(setIsLoading(false));
-            dispatch(setIsError(false));
+            if (res.data.status === 'FAILED') {
+                dispatch(setIsError(true));
+                dispatch(setErrorMessage(res.data.err));
+            } else {
+                dispatch(setIsError(false));
+            }
         }).catch(res => {
             dispatch(setIsLoading(false));
             dispatch(setIsError(true));
@@ -58,12 +73,17 @@ export const onDeleteDataById = (id) => {
         }
         axios.post(url, params).then(res => {
             dispatch(setIsLoading(false));
-            dispatch(setIsError(false));
-            dispatch(getData());
+            if (res.data.status === 'FAILED') {
+                dispatch(setIsError(true));
+                dispatch(setErrorMessage(res.data.err));
+            } else {
+                dispatch(setIsError(false));
+                dispatch(getData());
+            }
         }).catch(res => {
             dispatch(setIsLoading(false));
             dispatch(setIsError(true));
-            dispatch(setErrorMessage('Something went wrong'));
+            dispatch(setErrorMessage(res.err));
         })
     }
 }
@@ -74,7 +94,12 @@ export const onExpireData = () => {
         dispatch(setIsLoading(true));
         axios.get(url).then(res => {
             dispatch(setIsLoading(false));
-            dispatch(setIsError(false));
+            if (res.data.status === 'FAILED') {
+                dispatch(setIsError(true));
+                dispatch(setErrorMessage(res.data.err));
+            } else {
+                dispatch(setIsError(false));
+            }
         }).catch(res => {
             dispatch(setIsLoading(false));
             dispatch(setIsError(true));
@@ -92,8 +117,13 @@ export const onExpireDataById = (id) => {
         }
         axios.post(url, params).then(res => {
             dispatch(setIsLoading(false));
-            dispatch(setIsError(false));
-            dispatch(getData());
+            if (res.data.status === 'FAILED') {
+                dispatch(setIsError(true));
+                dispatch(setErrorMessage(res.data.err));
+            } else {
+                dispatch(setIsError(false));
+                dispatch(getData());
+            }
         }).catch(res => {
             dispatch(setIsLoading(false));
             dispatch(setIsError(true));
@@ -108,9 +138,14 @@ export const getData = () => {
         dispatch(setIsLoading(true));
         axios.get(url).then(res => {
             dispatch(setIsLoading(false));
-            dispatch(setRecords(res.data.data));
-            setAnalytics(dispatch, res.data.data);
+            if(res.data.status === 'FAILED') {
+                dispatch(setIsError(true));
+                dispatch(setErrorMessage(res.data.err));
+            } else {
+            dispatch(setRecords(res.data.data.data));
+            setAnalytics(dispatch, res.data.data.data);
             dispatch(setIsError(false));
+            }
         }).catch(res => {
             dispatch(setIsLoading(false));
             dispatch(setIsError(true));
@@ -124,7 +159,7 @@ const setAnalytics = (dispatch, records) => {
     let inactiveRecords = records.length - activeRecords;
     let stats = [];
     let groupStats = records.reduce(function (r, a) {
-        if(a.ActiveIndicator === 'Y') {
+        if (a.ActiveIndicator === 'Y') {
             let month = months[new Date(a.Effective_date).getMonth()];
             r[month] = r[month] || 0;
             r[month]++;
